@@ -22,6 +22,7 @@ class Stack {
   }
 
   pop() {
+    if (this.stack.length == 0) return undefined;
     return this.stack.pop();
   }
 
@@ -34,17 +35,21 @@ module.exports = {
   Stack
 };
 
-// const mass = new Stack;
-// console.log(mass);
-// console.log(mass.stack);
-// console.log(mass.stack.push(1));
-// console.log(mass.stack.push(2));
-// console.log(mass.stack.push(3));
-// console.log(mass.stack.push(4));
-// console.log(mass);
-// console.log(mass.stack.pop());
-// console.log(mass.stack.pop());
-// console.log(mass);
-// console.log(mass.stack.peek());
+// const stack = new Stack;
+// console.log(stack);
+// console.log(stack.stack);
+// console.log(stack.stack.push(1));
+// console.log(stack.stack.push(2));
+// console.log(stack.stack.push(3));
+// console.log(stack.stack.push(4));
+// console.log(stack);
+// console.log(stack.stack.pop());
+// console.log(stack.stack.pop());
+// console.log(stack.stack.pop());
+// console.log(stack.stack.pop());
+// console.log(stack.stack.pop());
+// console.log(stack);
+
+
 
 
