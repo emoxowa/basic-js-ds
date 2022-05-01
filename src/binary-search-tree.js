@@ -8,15 +8,15 @@ const { Node } = require('../extensions/list-tree.js');
 */
 class BinarySearchTree {
   constructor() {
-    this._root = null;
+    this.root_ = null;
   }
 
   root() {
-    return this._root;
+    return this.root_;
   }
 
   add(data) {
-    this._root = addWithin(this._root, data)
+    this.root_ = addWithin(this.root_, data)
     
       function addWithin(node, data)  {
         if (!node) {
@@ -35,15 +35,15 @@ class BinarySearchTree {
     }
   
 
-  has(/* data */) {
+  has(data) {
     
   }
 
-  find(/* data */) {
+  find(data) {
     
   }
 
-  remove(/* data */) {
+  remove(data) {
     
   }
 
