@@ -1,11 +1,6 @@
 const { NotImplementedError } = require('../extensions/index.js');
 
 const { Node } = require('../extensions/list-tree.js');
-
-/**
-* Implement simple binary search tree according to task description
-* using Node from extensions
-*/
 class BinarySearchTree {
   constructor() {
     this.root_ = null;
@@ -16,9 +11,9 @@ class BinarySearchTree {
   }
 
   add(data) {
-    this.root_ = addWithin(this.root_, data)
-    
-    function addWithin(node, data)  {
+    this.root_ = addWithin(this.root_, data);
+
+    function addWithin(node, data) {
       if (!node) {
         return new Node(data);
       }
@@ -32,9 +27,7 @@ class BinarySearchTree {
       }
       return node;
     }
-    
   }
-  
 
   has(data) {
     return searchWithin(this.root_, data);
@@ -49,10 +42,9 @@ class BinarySearchTree {
       if (data < node.data) {
         return searchWithin(node.left, data);
       } else {
-         return searchWithin(node.right, data);
+        return searchWithin(node.right, data);
       }
     }
-
   }
 
   find(data) {
@@ -71,17 +63,48 @@ class BinarySearchTree {
         return searchWithin(node.right, data);
       }
     }
-
   }
 
   remove(data) {
-    
+    this.root_ = this.removeNode(this.root_, data);
+  }
+
+  removeNode(node, data) {
+    if (!node) {
+      return null;
+    }
+    if (data < node.data) {
+      node.left = this.removeNode(node.left, data);
+      return node;
+    } else if (data > node.data) {
+      node.right = this.removeNode(node.right, data);
+      return node;
+    } else {
+      if (!node.left && !node.right) {
+        return null;
+      }
+      if (!node.left) {
+        return node.right;
+      }
+      if (!node.right) {
+        return node.left;
+      }
+
+      let minRightNode = node.right;
+      while (minRightNode.left) {
+        minRightNode = minRightNode.left;
+      }
+      node.data = minRightNode.data;
+
+      node.right = this.removeNode(node.right, minRightNode.data);
+      return node;
+    }
   }
 
   min() {
     if (!this.root_) {
-      return
-    } 
+      return;
+    }
     let node = this.root_;
     while (node.left) {
       node = node.left;
@@ -90,14 +113,14 @@ class BinarySearchTree {
   }
 
   max() {
-     if (!this.root_) {
-       return;
-     }
-     let node = this.root_;
-     while (node.right) {
-       node = node.right;
-     }
-     return node.data;   
+    if (!this.root_) {
+      return;
+    }
+    let node = this.root_;
+    while (node.right) {
+      node = node.right;
+    }
+    return node.data;
   }
 }
 
